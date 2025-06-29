@@ -2,7 +2,7 @@ services:
   - type: web
     name: alphagenome-backend
     env: python
-    buildCommand: "./build.sh"
+    buildCommand: "pip install -r requirements.txt"
     startCommand: "gunicorn app:app"
     envVars:
       - key: ALPHAGENOME_API_KEY
