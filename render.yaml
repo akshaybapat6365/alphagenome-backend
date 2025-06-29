@@ -2,14 +2,11 @@ services:
   - type: web
     name: alphagenome-backend
     runtime: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn app:app"
+    buildCommand: "pip install --upgrade pip && pip install -r requirements.txt"
+    startCommand: "gunicorn app:app --bind 0.0.0.0:$PORT"
     envVars:
       - key: ALPHAGENOME_API_KEY
         value: AIzaSyAd8VEbbDBGpQoPGK4v8LZzdaGlgBh2kaE
-      - key: PYTHON_VERSION
-        value: "3.11"
     autoDeploy: true
     healthCheckPath: /health
-    plan: free
     region: oregon
